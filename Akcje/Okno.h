@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <list>
 #include "obliczenie.h"
 using namespace std;
@@ -55,6 +55,10 @@ namespace Akcje {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::RichTextBox^  richAR;
+	private: System::Windows::Forms::Label^  label4;
+
 
 
 
@@ -122,9 +126,9 @@ namespace Akcje {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea8 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->wygeneruj = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
@@ -142,33 +146,38 @@ namespace Akcje {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->richAR = (gcnew System::Windows::Forms::RichTextBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
-			chartArea8->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea8);
-			legend8->Name = L"Legend1";
-			this->chart1->Legends->Add(legend8);
-			this->chart1->Location = System::Drawing::Point(63, 32);
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
+			this->chart1->Location = System::Drawing::Point(42, 21);
+			this->chart1->Margin = System::Windows::Forms::Padding(2);
 			this->chart1->Name = L"chart1";
-			series8->ChartArea = L"ChartArea1";
-			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series8->Legend = L"Legend1";
-			series8->Name = L"cena";
-			this->chart1->Series->Add(series8);
-			this->chart1->Size = System::Drawing::Size(556, 396);
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->Legend = L"Legend1";
+			series1->Name = L"cena";
+			this->chart1->Series->Add(series1);
+			this->chart1->Size = System::Drawing::Size(371, 257);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			this->chart1->Click += gcnew System::EventHandler(this, &Okno::chart1_Click);
 			// 
 			// wygeneruj
 			// 
-			this->wygeneruj->Location = System::Drawing::Point(63, 434);
+			this->wygeneruj->Location = System::Drawing::Point(42, 282);
+			this->wygeneruj->Margin = System::Windows::Forms::Padding(2);
 			this->wygeneruj->Name = L"wygeneruj";
-			this->wygeneruj->Size = System::Drawing::Size(130, 31);
+			this->wygeneruj->Size = System::Drawing::Size(87, 20);
 			this->wygeneruj->TabIndex = 1;
 			this->wygeneruj->Text = L"wygeneruj\r\n\r\n";
 			this->wygeneruj->UseVisualStyleBackColor = true;
@@ -182,10 +191,11 @@ namespace Akcje {
 					this->Column1, this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column7, this->Column8, this->Column9,
 					this->Column10
 			});
-			this->dataGridView1->Location = System::Drawing::Point(63, 501);
+			this->dataGridView1->Location = System::Drawing::Point(42, 326);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(1084, 150);
+			this->dataGridView1->Size = System::Drawing::Size(723, 97);
 			this->dataGridView1->TabIndex = 2;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Okno::dataGridView1_CellContentClick);
 			// 
@@ -249,44 +259,78 @@ namespace Akcje {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(339, 478);
+			this->label1->Location = System::Drawing::Point(226, 311);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(559, 20);
+			this->label1->Size = System::Drawing::Size(378, 13);
 			this->label1->TabIndex = 3;
-			this->label1->Text = L"Warto�ci empirycznej funkcji autokorelacji analizowanego szeregu czasowego ";
+			this->label1->Text = L"Wartości empirycznej funkcji autokorelacji analizowanego szeregu czasowego ";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			this->label1->Click += gcnew System::EventHandler(this, &Okno::label1_Click);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(141, 663);
+			this->label2->Location = System::Drawing::Point(94, 431);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(297, 40);
+			this->label2->Size = System::Drawing::Size(203, 26);
 			this->label2->TabIndex = 4;
-			this->label2->Text = L"r - estymator funkcji autokorelacji \r\ns - b��d standardowy funkcji autokorelacji";
+			this->label2->Text = L"r - estymator funkcji autokorelacji \r\ns - błąd standardowy funkcji autokorelacji";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(224, 9);
+			this->label3->Location = System::Drawing::Point(149, 6);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(316, 20);
+			this->label3->Size = System::Drawing::Size(214, 13);
 			this->label3->TabIndex = 5;
 			this->label3->Text = L"Wykres analizowanego szeregu czasowego";
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(516, 139);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 6;
+			this->button1->Text = L"Oblicz";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Okno::button1_Click);
+			// 
+			// richAR
+			// 
+			this->richAR->Location = System::Drawing::Point(516, 37);
+			this->richAR->Name = L"richAR";
+			this->richAR->Size = System::Drawing::Size(337, 96);
+			this->richAR->TabIndex = 7;
+			this->richAR->Text = L"";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(513, 21);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(54, 13);
+			this->label4->TabIndex = 8;
+			this->label4->Text = L"Model AR";
+			// 
 			// Okno
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1378, 944);
+			this->ClientSize = System::Drawing::Size(919, 614);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->richAR);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->wygeneruj);
 			this->Controls->Add(this->chart1);
-			this->MinimumSize = System::Drawing::Size(1400, 1000);
+			this->Margin = System::Windows::Forms::Padding(2);
+			this->MinimumSize = System::Drawing::Size(915, 492);
 			this->Name = L"Okno";
 			this->Text = L"Okno";
 			this->Load += gcnew System::EventHandler(this, &Okno::Okno_Load);
@@ -319,6 +363,14 @@ namespace Akcje {
 			 }
 	
 private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  ee) {
+	richAR->Text = "Ilość elementów: " + rozmiar;
+	richAR->Text += "\nPrzybliżona wartość Beta1: " + beta[1];
+	richAR->Text += "\nPrzybliżona wartość Beta0: " + beta[0];
+	richAR->Text += "\nŚrednie odchylenie od prostej regresji: " + e;
+	richAR->Text += "\nWspółczynnik zmienności losowej: " + v + " %";
+	richAR->Text += "\nStatystyka Durbina-Watsona: " + stats;
 }
 };
 }

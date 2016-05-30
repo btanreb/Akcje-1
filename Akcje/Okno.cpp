@@ -21,6 +21,12 @@ void main() {
 	obliczenie.fautokorelacja();
 	obliczenie.fbladstandardowy();
 
+	obliczenie.calculateBeta(1);
+	obliczenie.calculateBeta(0);
+	obliczenie.srednieOdchylenieOdProstejRegresji();
+	obliczenie.wspolczynnikZmiennosciLosowej();
+	obliczenie.statystykaDurbinaWatsona();
+
 	Application::EnableVisualStyles;
 	Application::SetCompatibleTextRenderingDefault(false);
 	Akcje::Okno okno;

@@ -7,11 +7,13 @@ vector<double>dane;
 vector<double>autokorelacja;
 vector<double>bladstandardowy;
 int rozmiar = 0;
+
+double beta[2], e = 0, v = 0, stats = 0;
+
 class Obliczenie
 {
 public:
-	
-	double srednia() {
+		double srednia() {
 		double pom;
 		int i = 0;
 		for (vector<double>::iterator it = dane.begin(); it != dane.end(); it++) {
@@ -65,6 +67,80 @@ public:
 		}
 		
 
+	}
+
+	double calculateBeta(int index)
+	{
+		if (index == 1)
+		{
+			double up = 0, down = 0, mid = this->srednia();
+
+			for (int k=1; k < rozmiar; k++)
+			{
+				for (int i = 1; i < rozmiar - k; i++)
+					up = (dane[i] - mid)*(dane[i + k] - mid);
+			}
+			for (int i = 1; i < rozmiar; i++)
+				down += pow((dane[i] - mid), 2);
+			beta[1] = up / down;
+			return beta[1];
+		}
+		if (index == 0)
+		{
+			double mid = this->srednia();
+			beta[0] = mid - (this->calculateBeta(1) * mid);
+			return beta[0];
+		}
+	}
+	double srednieOdchylenieOdProstejRegresji()
+	{
+		double y = 0, mid = this->srednia(), temp = 0;
+		for (int i = 1; i < rozmiar; i++)
+		{
+			y = this->calculateBeta(0) + (this->calculateBeta(1) * dane[i]);
+			temp += y - mid;
+		}
+		e = temp;
+		return e;
+	}
+	double wspolczynnikZmiennosciLosowej()
+	{
+		v = this->srednieOdchylenieOdProstejRegresji() / this->srednia();
+		return v;
+	}
+	double wspolczynnikDeterminacji()
+	{
+		//R^2 nalezy <0;1>
+		//niedokonczone
+		double up = 0, down = 0, mid = srednia();
+
+		for (int i = 1; i < rozmiar; i++)
+			down += pow(dane[i] - mid, 2);
+		return 0;
+	}
+	double statystykaDurbinaWatsona()
+	{
+		/*
+		statystyka ma wartosci <0;4>
+		wartosci w okolicy 0 - bardzo silna, DODATNIA autokorelacja
+		wartosc 2 - BRAK autokorelacji
+		wartosci w okolicy 4 - bardzo silna, UJEMNA autokorelacja
+		*/
+		double y = 0, mid = this->srednia(), temp[12];
+		for (int i = 1; i < rozmiar; i++)
+		{
+			y = this->calculateBeta(0) + (this->calculateBeta(1) * dane[i]);
+			temp[i] = y - mid;
+		}
+		
+		double up = 0, down = 0;
+		for (int i = 2; i < rozmiar; i++)
+			up += pow(temp[i] - temp[i - 1], 2);
+		for (int i = 1; i < rozmiar; i++)
+			down += pow(temp[i], 2);
+
+		stats = up / down;
+		return stats;
 	}
 };
 

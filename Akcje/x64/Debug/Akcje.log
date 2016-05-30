@@ -1,0 +1,5 @@
+﻿  Okno.cpp
+Okno.cpp(30): warning C4551: function call missing argument list
+c:\users\btanreb\desktop\akcje-master\akcje\obliczenie.h(20): warning C4700: uninitialized local variable 'pom' used
+c:\users\btanreb\desktop\akcje-master\akcje\obliczenie.h(94): warning C4715: 'Obliczenie::calculateBeta': not all control paths return a value
+  Akcje.vcxproj -> C:\Users\btanreb\Desktop\Akcje-master\x64\Debug\Akcje.exe
